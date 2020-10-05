@@ -2,6 +2,7 @@ import re
 import pandas as pd
 import numpy as np
 from os import listdir, path
+default_years = [str(y) for y in range(2007, 2021)]
 
 def download_data():
     from bs4 import BeautifulSoup
@@ -43,11 +44,10 @@ def download_data():
       # remove compressed files
       remove(filename)
 
-def get_filenames(data_dir="data", years=map(str, range(2007,2021))):
+def get_filenames(data_dir="data", years=default_years):
     filenames = {}
-    data_files = listdir(data_dir)
     for year in years:
-      for file_ in data_files:
+      for file_ in listdir(data_dir):
         if year in file_:
           filenames[year] = path.join(data_dir, file_)
           break
