@@ -38,12 +38,14 @@ for filename in filenames.values():
   # remove compressed files
   remove(filename)
 
-# get new filenames
-new_files = listdir(data_dir)
-for year in filenames.keys():
-  for file_ in new_files:
-    if year in file_:
-      filenames[year] = path.join(data_dir, file_)
-      break
-  else:
-    raise ValueError(f"No data file found for {year}")
+def get_filenames(data_dir="data", years=map(str, range(2007,2021))):
+	filenames = {}
+	data_files = listdir(data_dir)
+	for year in years:
+	  for file_ in data_files:
+	    if year in file_:
+	      filenames[year] = path.join(data_dir, file_)
+	      break
+	  else:
+	    raise ValueError(f"No data file found for {year}")
+	return filenames
