@@ -72,4 +72,5 @@ def get_data(filenames):
             df[var] = pd.to_datetime(df[var])
     return dfs
 
-print(get_data(get_filenames()))
+if __name__=="__main__":
+    print(get_data(get_filenames()))
