@@ -1,12 +1,13 @@
 import re
 import pandas as pd
 import numpy as np
+from os import listdir, path
 
 def download_data():
     from bs4 import BeautifulSoup
     import requests
     from pyunpack import Archive
-    from os import makedirs, path, remove, listdir
+    from os import makedirs, remove
 
     # downloading page with links
     main_url = "https://portal.prf.gov.br/dados-abertos-acidentes"
